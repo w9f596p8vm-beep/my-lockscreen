@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>My iPhone</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background: #11131d;
+  font-family: -apple-system, BlinkMacSystemFont, "Arial", sans-serif;
+  color: white;
+}
+
+.phone {
+  width: 100%;
+  max-width: 430px;
+  height: 100dvh;
+  min-height: 600px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #414653, #171a28);
+}
+
+.status {
+  height: 72px;
+  padding: 25px 28px 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.island {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 105px;
+  height: 31px;
+  background: #050507;
+  border-radius: 30px;
+}
+
+.date {
+  margin-top: 42px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.clock {
+  text-align: center;
+  font-size: clamp(76px, 23vw, 100px);
+  font-weight: 300;
+  margin: 10px 0 38px;
+  letter-spacing: -4px;
+}
+
+.notifications {
+  padding: 0 16px;
+}
+
+.notice {
+  background: rgba(240, 242, 249, .76);
+  color: #20212a;
+  border-radius: 19px;
+  padding: 12px 14px;
+  margin-bottom: 7px;
+  min-height: 66px;
+  font-size: 13px;
+}
+
+.notice-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #444653;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.app-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: #ffdf00;
+  color: #242424;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.notice-time {
+  margin-left: auto;
+  color: #777985;
+  font-weight: 400;
+}
+
+.unlock-hint {
+  position: absolute;
+  bottom: 135px;
+  width: 100%;
+  text-align: center;
+  color: #dddde4;
+  font-size: 13px;
+}
+
+.camera {
+  position: absolute;
+  bottom: 48px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #565a68;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+}
+
+.home-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 105px;
+  background: white;
+  border-radius: 10px;
+}
+
+.screen {
+  display: none;
+  position: absolute;
+  inset: 0;
+}
+
+.screen.active {
+  display: block;
+}
+
+#lock {
+  cursor: pointer;
+}
+
+#passcode {
+  background: linear-gradient(145deg, #414653, #171a28);
+}
+
+.pass-title {
+  text-align: center;
+  margin-top: 72px;
+  font-size: 18px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  margin: 17px 0 40px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid white;
+  border-radius: 50%;
+}
+
+.dot.filled {
+  background: white;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 68px);
+  justify-content: center;
+  gap: 9px 18px;
+}
+
+.key {
+  width: 68px;
+  height: 68px;
+  border: 0;
+  border-radius: 50%;
+  color: white;
+  background: rgba(190, 194, 208, .3);
+  font-size: 29px;
+  font-weight: 300;
+}
+
+.key:active {
+  background: rgba(255, 255, 255, .6);
+}
+
+.key small {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-top: -2px;
+}
+
+.pass-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 28px 38px;
+  font-size: 14px;
+}
+
+.pass-actions button {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 14px;
+}
+
+#home {
+  background: linear-gradient(150deg, #b9c7da, #75899f);
+  color: white;
+}
+
+.widgets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 24px 22px;
+  margin-top: 35px;
+}
+
+.widget {
+  height: 145px;
+  border-radius: 25px;
+  padding: 15px;
+  color: #252936;
+  background: #f7f7fb;
+  font-size: 13px;
+}
+
+.weather {
+  background: linear-gradient(145deg, #3187e5, #69a9f4);
+  color: white;
+}
+
+.temperature {
+  font-size: 43px;
+  font-weight: 300;
+  margin: 5px 0;
+}
+
+.reminder-title {
+  color: #3986eb;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.apps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px 8px;
+  padding: 12px 20px;
+}
+
+.app {
+  text-align: center;
+  font-size: 11px;
+}
+
+.app-emoji {
+  width: 54px;
+  height: 54px;
+  border-radius: 15px;
+  margin: auto auto 6px;
+  display: grid;
+  place-items: center;
+  background: #f8f8fb;
+  font-size: 31px;
+  box-shadow: 0 3px 8px #35415430;
+}
+
+.dock {
+  position: absolute;
+  bottom: 35px;
+  left: 5%;
+  width: 90%;
+  height: 75px;
+  border-radius: 25px;
+  background: #ffffff55;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dock .app-emoji {
+  margin: 0;
+  width: 48px;
+  height: 48px;
+}
+
+#home .home-bar {
+  background: #11131d;
+}
+
+.message {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 12px;
+  color: #ffffffbd;
+}
+</style>
+</head>
+
+<body>
+<div class="phone">
+
+  <section id="lock" class="screen active">
+    <div class="status">
+      <span id="statusTime">23:32</span>
+      <span>▮▮▮　●　67 ▰</span>
+    </div>
+    <div class="island"></div>
+
+    <div class="date" id="date">10월 22일 목요일</div>
+    <div class="clock" id="clock">23:32</div>
+
+    <div class="notifications">
+      <div class="notice">
+        <div class="notice-head">
+          <span class="app-icon">●</span>
+          카카오톡 <span class="notice-time">20:47</span>
+        </div>
+        <b>포도</b><br>요원님
+      </div>
+
+      <div class="notice">
+        <div class="notice-head">
+          <span class="app-icon">●</span>
+          카카오톡 <span class="notice-time">19:18</span>
+        </div>
+        <b>김민수</b><br>토요일 18시 어때
+      </div>
+
+      <div class="notice">
+        <div class="notice-head">
+          <span class="app-icon" style="background:#f04b30;color:white">C</span>
+          캐치테이블 <span class="notice-time">18:42</span>
+        </div>
+        최**님, 10월 24일 예약을 확인해 주세요.
+      </div>
+
+      <div class="notice">
+        <div class="notice-head">
+          <span class="app-icon" style="background:#3154e8;color:white">T.</span>
+          트립닷컴 <span class="notice-time">17:25</span>
+        </div>
+        두근두근 ✈ 최**님, 예약일이 얼마 남지 않았어요!
+      </div>
+    </div>
+
+    <div class="unlock-hint">화면을 탭하여 열기</div>
+    <div class="camera">📷</div>
+    <div class="home-bar"></div>
+  </section>
+
+  <section id="passcode" class="screen">
+    <div class="status">
+      <span id="passTime">23:32</span>
+      <span>▮▮▮　●　67 ▰</span>
+    </div>
+    <div class="island"></div>
+
+    <div class="pass-title">암호 입력</div>
+    <div class="dots" id="dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <div class="keypad">
+      <button class="key" onclick="press(1)">1</button>
+      <button class="key" onclick="press(2)">2<small>ABC</small></button>
+      <button class="key" onclick="press(3)">3<small>DEF</small></button>
+      <button class="key" onclick="press(4)">4<small>GHI</small></button>
+      <button class="key" onclick="press(5)">5<small>JKL</small></button>
+      <button class="key" onclick="press(6)">6<small>MNO</small></button>
+      <button class="key" onclick="press(7)">7<small>PQRS</small></button>
+      <button class="key" onclick="press(8)">8<small>TUV</small></button>
+      <button class="key" onclick="press(9)">9<small>WXYZ</small></button>
+      <span></span>
+      <button class="key" onclick="press(0)">0</button>
+    </div>
+
+    <div class="pass-actions">
+      <button onclick="cancelPass()">취소</button>
+      <button onclick="erase()">지우기</button>
+    </div>
+    <div class="home-bar"></div>
+  </section>
+
+  <section id="home" class="screen">
+    <div class="status">
+      <span id="homeTime">23:32</span>
+      <span>▮▮▮　●　67 ▰</span>
+    </div>
+    <div class="island"></div>
+
+    <div class="widgets">
+      <div class="widget weather">
+        <b>서울 ›</b>
+        <div class="temperature">17°</div>
+        <div>🌤️ 맑음</div>
+        <div>최고:21° 최저:11°</div>
+      </div>
+
+      <div class="widget">
+        <div class="reminder-title">⊙ 미리 알림</div>
+        <b>◯ 4주년</b>
+        <p>10월 24일</p>
+        <small style="color:#999">○ 재관이 생일 · 12월 9일</small>
+      </div>
+    </div>
+
+    <div class="apps">
+      <div class="app"><div class="app-emoji">💬</div>카카오톡</div>
+      <div class="app"><div class="app-emoji">📝</div>메모</div>
+      <div class="app"><div class="app-emoji">🧭</div>Safari</div>
+      <div class="app"><div class="app-emoji">🟢</div>메시지</div>
+      <div class="app"><div class="app-emoji">📅</div>캘린더</div>
+      <div class="app"><div class="app-emoji">🕒</div>시계</div>
+    </div>
+
+    <div class="message">앱을 눌러 열어보세요</div>
+
+    <div class="dock">
+      <div class="app-emoji">📞</div>
+      <div class="app-emoji">🟢</div>
+      <div class="app-emoji">💬</div>
+      <div class="app-emoji">🧭</div>
+    </div>
+    <div class="home-bar"></div>
+  </section>
+
+</div>
+
+<script>
+let code = "";
+const PASSWORD = "1234";
+
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
+
+document.getElementById("lock").addEventListener("click", () => {
+  showScreen("passcode");
+});
+
+function press(number) {
+  if (code.length >= 4) return;
+
+  code += number;
+
+  document.querySelectorAll(".dot").forEach((dot, index) => {
+    dot.classList.toggle("filled", index < code.length);
+  });
+
+  if (code.length === 4) {
+    setTimeout(() => {
+      if (code === PASSWORD) {
+        code = "";
+        showScreen("home");
+      } else {
+        code = "";
+        document.querySelectorAll(".dot").forEach(dot => {
+          dot.classList.remove("filled");
+        });
+        alert("암호가 올바르지 않습니다.");
+      }
+    }, 250);
+  }
+}
+
+function erase() {
+  code = code.slice(0, -1);
+  document.querySelectorAll(".dot").forEach((dot, index) => {
+    dot.classList.toggle("filled", index < code.length);
+  });
+}
+
+function cancelPass() {
+  code = "";
+  document.querySelectorAll(".dot").forEach(dot => {
+    dot.classList.remove("filled");
+  });
+  showScreen("lock");
+}
+
+function updateClock() {
+  const now = new Date();
+  const time = now.toLocaleTimeString("ko-KR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+
+  document.getElementById("clock").textContent = time;
+  document.getElementById("statusTime").textContent = time;
+  document.getElementById("passTime").textContent = time;
+  document.getElementById("homeTime").textContent = time;
+
+  document.getElementById("date").textContent =
+    now.toLocaleDateString("ko-KR", {
+      month: "long",
+      day: "numeric",
+      weekday: "long"
+    });
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
