@@ -315,6 +315,137 @@ body {
   font-size: 12px;
   color: #ffffffbd;
 }
+/* 앱 아이콘 공통 디자인 */
+.app-emoji {
+  width: 64px;
+  height: 64px;
+  border-radius: 15px;
+  margin: 0 auto 6px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px #00000018;
+}
+
+/* 카카오톡 */
+.kakao-icon {
+  background: #fee500;
+}
+
+.kakao-icon span {
+  background: #382d00;
+  color: #fee500;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 8px 5px;
+  border-radius: 9px;
+}
+
+/* 메모 */
+.memo-icon {
+  background: linear-gradient(#ffda57 0 20%, #fffdf4 20%);
+  flex-direction: column;
+  gap: 9px;
+  padding-top: 12px;
+}
+
+.memo-icon div {
+  width: 80%;
+  height: 1px;
+  background: #c9c9c9;
+}
+
+/* Safari */
+.safari-icon {
+  background: radial-gradient(circle, #fff 35%, #bcecff 36%, #168bd7 100%);
+  border: 2px solid #e5f5ff;
+  border-radius: 50%;
+}
+
+.safari-icon .compass {
+  font-size: 39px;
+  color: #f04444;
+  text-shadow: 2px 2px #1475c5;
+  transform: rotate(-35deg);
+}
+
+/* 메시지 */
+.message-icon {
+  background: linear-gradient(145deg, #62ed77, #00b93d);
+}
+
+.message-icon div {
+  width: 43px;
+  height: 31px;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+}
+
+.message-icon div::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 6px;
+  border-width: 8px 8px 0 0;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* 캘린더 */
+.calendar-icon {
+  background: white;
+  flex-direction: column;
+  border-radius: 14px;
+}
+
+.calendar-icon span {
+  background: #ef5350;
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 0;
+}
+
+.calendar-icon strong {
+  font-size: 32px;
+  color: #222;
+  font-weight: 500;
+}
+
+/* 시계 */
+.clock-icon {
+  background: radial-gradient(circle, #242424, #000);
+  border-radius: 50%;
+}
+
+.clock-icon::before {
+  content: "12";
+  position: absolute;
+  top: 7px;
+  color: white;
+  font-size: 10px;
+}
+
+.clock-hand {
+  position: absolute;
+  width: 3px;
+  height: 20px;
+  background: white;
+  border-radius: 4px;
+  transform: rotate(35deg);
+}
+
+.clock-hand.second {
+  height: 25px;
+  width: 2px;
+  background: #ff9f43;
+  transform: rotate(145deg);
+}
 </style>
 </head>
 
@@ -430,12 +561,49 @@ body {
     </div>
 
     <div class="apps">
-      <div class="app"><div class="app-emoji">💬</div>카카오톡</div>
-      <div class="app"><div class="app-emoji">📝</div>메모</div>
-      <div class="app"><div class="app-emoji">🧭</div>Safari</div>
-      <div class="app"><div class="app-emoji">🟢</div>메시지</div>
-      <div class="app"><div class="app-emoji">📅</div>캘린더</div>
-      <div class="app"><div class="app-emoji">🕒</div>시계</div>
+      <div class="app">
+  <div class="app-emoji kakao-icon">
+    <span>TALK</span>
+  </div>
+  카카오톡
+</div>
+
+<div class="app">
+  <div class="app-emoji memo-icon">
+    <div></div><div></div><div></div>
+  </div>
+  메모
+</div>
+
+<div class="app">
+  <div class="app-emoji safari-icon">
+    <div class="compass">➤</div>
+  </div>
+  Safari
+</div>
+
+<div class="app">
+  <div class="app-emoji message-icon">
+    <div></div>
+  </div>
+  메시지
+</div>
+
+<div class="app">
+  <div class="app-emoji calendar-icon">
+    <span>목</span>
+    <strong>22</strong>
+  </div>
+  캘린더
+</div>
+
+<div class="app">
+  <div class="app-emoji clock-icon">
+    <div class="clock-hand"></div>
+    <div class="clock-hand second"></div>
+  </div>
+  시계
+</div>
     </div>
 
     <div class="message">앱을 눌러 열어보세요</div>
