@@ -731,7 +731,7 @@ body {
 
 .kakao-scroll {
   position: absolute;
-  top: 170px;
+  top: 185px;
   bottom: 75px;
   left: 0;
   right: 0;
@@ -967,7 +967,7 @@ body {
 <section id="kakao" class="screen kakao-screen">
 
   <div class="status">
-    <span>23:32</span>
+    <span id="kakaoTime">23:32</span>
     <span>▮▮▮ 5G ▰</span>
   </div>
   <div class="island"></div>
@@ -1057,7 +1057,7 @@ body {
 <section id="chat-jaegwan" class="screen chat-room">
 
   <div class="status">
-    <span>23:32</span>
+    <span id="chatRoomTime">23:32</span>
     <span>▮▮▮ 5G ▰</span>
   </div>
   <div class="island"></div>
@@ -1213,9 +1213,15 @@ function press(number) {
   if (code.length === 4) {
     setTimeout(() => {
       if (code === PASSWORD) {
-        code = "";
-        showScreen("home");
-      } else {
+  code = "";
+
+  document.querySelectorAll(".dot").forEach(dot => {
+    dot.classList.remove("filled");
+  });
+
+  showScreen("home");
+}
+      else {
         code = "";
         document.querySelectorAll(".dot").forEach(dot => {
           dot.classList.remove("filled");
@@ -1241,7 +1247,7 @@ function cancelPass() {
   showScreen("lock");
 }
 
-function updateClock() {
+function updateClock()
   const now = new Date();
   const time = now.toLocaleTimeString("ko-KR", {
     hour: "2-digit",
@@ -1253,6 +1259,8 @@ function updateClock() {
   document.getElementById("statusTime").textContent = time;
   document.getElementById("passTime").textContent = time;
   document.getElementById("homeTime").textContent = time;
+  document.getElementById("kakaoTime").textContent = time;
+  document.getElementById("chatRoomTime").textContent = time;
 
   document.getElementById("date").textContent =
     now.toLocaleDateString("ko-KR", {
