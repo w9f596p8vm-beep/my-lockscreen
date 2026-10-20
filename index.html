@@ -446,6 +446,281 @@ body {
   background: #ff9f43;
   transform: rotate(145deg);
 }
+  /* 카카오톡 채팅 목록 */
+.kakao-screen {
+  background: white;
+  color: #191919;
+}
+
+.kakao-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 22px 10px;
+}
+
+.kakao-header button {
+  background: none;
+  border: none;
+  font-size: 34px;
+  cursor: pointer;
+}
+
+.kakao-header h1 {
+  font-size: 27px;
+}
+
+.kakao-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 14px 16px;
+}
+
+.kakao-tabs span {
+  background: #f1f1f1;
+  padding: 10px 14px;
+  border-radius: 30px;
+  white-space: nowrap;
+  font-size: 15px;
+}
+
+.kakao-tabs .selected {
+  background: #171717;
+  color: white;
+}
+
+.kakao-banner {
+  margin: 8px 16px 12px;
+  padding: 22px;
+  background: #f2f2f2;
+  border-radius: 17px;
+}
+
+.kakao-banner p {
+  color: #999;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+.chat-list {
+  height: calc(100% - 330px);
+  overflow-y: auto;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: 13px 18px;
+  gap: 13px;
+  cursor: pointer;
+}
+
+.profile {
+  width: 55px;
+  height: 55px;
+  border-radius: 20px;
+  background: #a8c9ee;
+  color: #e1f1ff;
+  display: grid;
+  place-items: center;
+  font-size: 35px;
+  flex-shrink: 0;
+}
+
+.chat-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-info b {
+  font-size: 16px;
+}
+
+.unread {
+  color: #168bff;
+}
+
+.chat-info p {
+  color: #999;
+  font-size: 13px;
+  margin: 6px 0 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.chat-item small {
+  font-size: 11px;
+  color: #999;
+}
+
+.kakao-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  background: white;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 14px;
+  color: #aaa;
+}
+
+.kakao-nav .nav-active {
+  color: #111;
+  font-weight: bold;
+}
+
+.kakao-homebar {
+  position: absolute;
+  bottom: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 105px;
+  height: 5px;
+  background: #111;
+  border-radius: 10px;
+}
+
+/* 카카오톡 대화방 */
+.chat-room {
+  background: #b0c6d8;
+  color: #111;
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 23px 20px;
+  font-size: 19px;
+}
+
+.room-header button {
+  color: #078cff;
+  font-size: 23px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.room-header span {
+  color: #078cff;
+  font-size: 24px;
+}
+
+.messages-area {
+  position: absolute;
+  top: 155px;
+  bottom: 84px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  padding: 0 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.chat-date {
+  align-self: center;
+  background: #94aebf;
+  color: white;
+  border-radius: 20px;
+  padding: 6px 13px;
+  font-size: 12px;
+  margin: 18px 0;
+}
+
+.my-message {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.other-message {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.bubble {
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 76%;
+  overflow-wrap: anywhere;
+}
+
+.yellow {
+  background: #fee500;
+}
+
+.white {
+  background: white;
+}
+
+.my-message small,
+.other-message small {
+  color: #61707a;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.small-profile {
+  width: 37px;
+  height: 37px;
+  border-radius: 14px;
+  background: #a8c9ee;
+  color: #e1f1ff;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+  flex-shrink: 0;
+}
+
+.chat-input-area {
+  position: absolute;
+  bottom: 20px;
+  left: 3%;
+  width: 94%;
+  height: 57px;
+  background: #f5fdff;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 9px;
+}
+
+.chat-input-area .plus {
+  font-size: 29px;
+  color: #078cff;
+}
+
+.chat-input-area input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+}
+
+.chat-input-area button {
+  border: none;
+  border-radius: 50%;
+  background: #fee500;
+  height: 42px;
+  width: 42px;
+  font-size: 27px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
 </style>
 </head>
 
@@ -561,13 +836,12 @@ body {
     </div>
 
     <div class="apps">
-      <div class="app">
+<div class="app" onclick="showScreen('kakao')">
   <div class="app-emoji kakao-icon">
     <span>TALK</span>
   </div>
   카카오톡
 </div>
-
 <div class="app">
   <div class="app-emoji memo-icon">
     <div></div><div></div><div></div>
@@ -616,7 +890,179 @@ body {
     </div>
     <div class="home-bar"></div>
   </section>
+<!-- 카카오톡 채팅 목록 -->
+<section id="kakao" class="screen kakao-screen">
 
+  <div class="status">
+    <span>23:32</span>
+    <span>▮▮▮ 5G ▰</span>
+  </div>
+  <div class="island"></div>
+
+  <div class="kakao-header">
+    <button onclick="showScreen('home')">‹</button>
+    <h1>채팅</h1>
+  </div>
+
+  <div class="kakao-tabs">
+    <span class="selected">전체</span>
+    <span>안읽음</span>
+    <span>ChatGPT</span>
+    <span>통화</span>
+  </div>
+
+  <div class="kakao-banner">
+    <b>몽블랑 Let's Write 팝업</b>
+    <p>10.1-10.18 사전 예약하기</p>
+  </div>
+
+  <div class="chat-list">
+
+    <div class="chat-item" onclick="showScreen('chat-jaegwan')">
+      <div class="profile">●</div>
+      <div class="chat-info">
+        <b class="unread">류재관 📌</b>
+        <p>예, 감사합니다</p>
+      </div>
+      <small>9월 27일</small>
+    </div>
+
+    <div class="chat-item">
+      <div class="profile">●</div>
+      <div class="chat-info">
+        <b class="unread">현무 1팀 📌</b>
+        <p>농담이야...</p>
+      </div>
+      <small>9월 22일</small>
+    </div>
+
+    <div class="chat-item">
+      <div class="profile">●</div>
+      <div class="chat-info">
+        <b class="unread">포도</b>
+        <p>요원님</p>
+      </div>
+      <small>20:47</small>
+    </div>
+
+    <div class="chat-item">
+      <div class="profile">●</div>
+      <div class="chat-info">
+        <b class="unread">김민수</b>
+        <p>토요일 18시 어때</p>
+      </div>
+      <small>19:18</small>
+    </div>
+
+    <div class="chat-item">
+      <div class="profile">●</div>
+      <div class="chat-info">
+        <b class="unread">정수현</b>
+        <p>바빠 죽겠는데 소개팅은 무슨 됐다~</p>
+      </div>
+      <small>10월 4일</small>
+    </div>
+
+  </div>
+
+  <div class="kakao-nav">
+    <span>친구</span>
+    <span class="nav-active">채팅</span>
+    <span>쇼핑</span>
+    <span>더보기</span>
+  </div>
+
+  <div class="kakao-homebar"></div>
+</section>
+
+
+<!-- 류재관 채팅방 -->
+<section id="chat-jaegwan" class="screen chat-room">
+
+  <div class="status">
+    <span>23:32</span>
+    <span>▮▮▮ 5G ▰</span>
+  </div>
+  <div class="island"></div>
+
+  <div class="room-header">
+    <button onclick="showScreen('kakao')">❮ 1</button>
+    <b>류재관</b>
+    <span>☰</span>
+  </div>
+
+  <div class="messages-area" id="messagesArea">
+
+    <div class="chat-date">2026년 8월 15일 일요일</div>
+
+    <div class="my-message">
+      <small>07:21</small>
+      <div class="bubble yellow">어디야?</div>
+    </div>
+
+    <div class="my-message">
+      <small>07:21</small>
+      <div class="bubble yellow">무슨 일 있는건 아니지?</div>
+    </div>
+
+    <div class="my-message">
+      <small>07:21</small>
+      <div class="bubble yellow">어디야 재관아</div>
+    </div>
+
+    <div class="my-message">
+      <small>07:21</small>
+      <div class="bubble yellow">재관아</div>
+    </div>
+
+    <div class="my-message">
+      <small>07:21</small>
+      <div class="bubble yellow">류재관</div>
+    </div>
+
+    <div class="other-message">
+      <div class="small-profile">●</div>
+      <div class="bubble white">
+        재고ㅑㄴ이 친군데요 지금 저희집에서 자고있습니다 깨워서 보낼게요
+      </div>
+      <small>08:40</small>
+    </div>
+
+    <div class="my-message">
+      <small>08:40</small>
+      <div class="bubble yellow">주소 보내주세요 제가 갈게요</div>
+    </div>
+
+    <div class="chat-date">2026년 9월 27일 일요일</div>
+
+    <div class="my-message">
+      <small>21:33</small>
+      <div class="bubble yellow">
+        집은 정리해서 갖다줄게 퇴근할때 가져가
+      </div>
+    </div>
+
+    <div class="other-message">
+      <div class="small-profile">●</div>
+      <div class="bubble white">예, 감사합니다</div>
+      <small>21:33</small>
+    </div>
+
+  </div>
+
+  <div class="chat-input-area">
+    <span class="plus">＋</span>
+    <input
+      id="chatInput"
+      value="나 이제 너 때문에 여자 못 만나"
+      placeholder="메시지 입력"
+    >
+    <button onclick="sendChat()">↑</button>
+  </div>
+
+  <div class="kakao-homebar"></div>
+
+</section>
 </div>
 
 <script>
@@ -697,6 +1143,35 @@ function updateClock() {
 
 updateClock();
 setInterval(updateClock, 1000);
+function sendChat() {
+  const input = document.getElementById("chatInput");
+  const text = input.value.trim();
+
+  if (text === "") return;
+
+  const area = document.getElementById("messagesArea");
+
+  const message = document.createElement("div");
+  message.className = "my-message";
+
+  const time = document.createElement("small");
+  time.textContent = new Date().toLocaleTimeString("ko-KR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+
+  const bubble = document.createElement("div");
+  bubble.className = "bubble yellow";
+  bubble.textContent = text;
+
+  message.appendChild(time);
+  message.appendChild(bubble);
+  area.appendChild(message);
+
+  input.value = "";
+  area.scrollTop = area.scrollHeight;
+}
 </script>
 </body>
 </html>
