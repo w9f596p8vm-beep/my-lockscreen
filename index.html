@@ -739,6 +739,41 @@ body {
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
+  
+/* 하단 독 아이콘 디자인 */
+.dock .app-emoji {
+  width: 54px;
+  height: 54px;
+  margin: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* 전화 아이콘 */
+.phone-icon {
+  background: linear-gradient(145deg, #61ed77, #00bb42);
+  color: white;
+}
+
+.phone-icon span {
+  font-size: 38px;
+  transform: rotate(-35deg);
+}
+
+/* 독 안의 카카오톡 */
+.dock .kakao-icon {
+  background: #fee500;
+}
+
+/* 독 안의 메시지 */
+.dock .message-icon {
+  background: linear-gradient(145deg, #62ed77, #00b93d);
+}
+
+/* 독 안의 사파리 */
+.dock .safari-icon {
+  border-radius: 50%;
+}
 </style>
 </head>
 
@@ -900,12 +935,32 @@ body {
 
     <div class="message">앱을 눌러 열어보세요</div>
 
-    <div class="dock">
-      <div class="app-emoji">📞</div>
-      <div class="app-emoji">🟢</div>
-      <div class="app-emoji">💬</div>
-      <div class="app-emoji">🧭</div>
-    </div>
+
+<div class="dock">
+
+  <!-- 전화 -->
+  <div class="app-emoji phone-icon">
+    <span>☎</span>
+  </div>
+
+  <!-- 메시지 -->
+  <div class="app-emoji message-icon">
+    <div></div>
+  </div>
+
+  <!-- 카카오톡 -->
+  <div class="app-emoji kakao-icon"
+       onclick="showScreen('kakao')">
+    <span>TALK</span>
+  </div>
+
+  <!-- 사파리 -->
+  <div class="app-emoji safari-icon">
+    <div class="compass">➤</div>
+  </div>
+
+</div>
+
     <div class="home-bar"></div>
   </section>
 <!-- 카카오톡 채팅 목록 -->
