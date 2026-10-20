@@ -504,8 +504,8 @@ body {
 }
 
 .chat-list {
-  height: calc(100% - 330px);
-  overflow-y: auto;
+  height: auto;
+  overflow: visible;
 }
 
 .chat-item {
@@ -724,6 +724,21 @@ body {
   cursor: pointer;
   flex-shrink: 0;
 }
+  /* 카카오톡 배너와 채팅 목록 함께 스크롤 */
+#kakao {
+  overflow: hidden;
+}
+
+.kakao-scroll {
+  position: absolute;
+  top: 170px;
+  bottom: 75px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
 </style>
 </head>
 
@@ -914,6 +929,7 @@ body {
     <span>통화</span>
   </div>
 
+  <div class="kakao-scroll">
   <div class="kakao-banner">
     <b>몽블랑 Let's Write 팝업</b>
     <p>10.1-10.18 사전 예약하기</p>
@@ -967,7 +983,9 @@ body {
     </div>
 
   </div>
-
+    
+  </div>
+    
   <div class="kakao-nav">
     <span>친구</span>
     <span class="nav-active">채팅</span>
