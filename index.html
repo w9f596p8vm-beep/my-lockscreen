@@ -29,6 +29,18 @@ body {
   background: linear-gradient(145deg, #414653, #171a28);
 }
 
+.screen {
+  display: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* 공통 상단바 */
 
 .status {
   height: 72px;
@@ -40,16 +52,19 @@ body {
   font-size: 16px;
   position: relative;
   z-index: 2;
+  color: white;
 }
 
-/* 오른쪽 통신 상태 */
+.status-time {
+  font-variant-numeric: tabular-nums;
+}
+
 .status-right {
   display: flex;
   align-items: center;
   gap: 7px;
 }
 
-/* 통신 신호 */
 .signal-bars {
   display: flex;
   align-items: flex-end;
@@ -68,18 +83,16 @@ body {
 .signal-bars span:nth-child(3) { height: 14px; }
 .signal-bars span:nth-child(4) { height: 17px; }
 
-/* 5G */
 .network-text {
   font-size: 15px;
   font-weight: 700;
 }
 
-/* 배터리 */
 .battery {
   width: 28px;
   height: 15px;
-  border-radius: 4px;
   background: currentColor;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,6 +115,17 @@ body {
   font-weight: 800;
 }
 
+#home .status,
+#kakao .status {
+  color: #111;
+}
+
+#home .battery span,
+#kakao .battery span {
+  color: white;
+}
+
+/* 다이내믹 아일랜드 */
 
 .island {
   position: absolute;
@@ -112,10 +136,18 @@ body {
   height: 31px;
   background: #050507;
   border-radius: 30px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* 잠금화면 */
+
+#lock {
+  cursor: pointer;
 }
 
 .date {
-  margin-top: 0px;
+  margin-top: 0;
   text-align: center;
   font-size: 17px;
   font-weight: 600;
@@ -192,7 +224,8 @@ body {
   font-size: 26px;
 }
 
-.home-bar {
+.home-bar,
+.kakao-homebar {
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -201,21 +234,11 @@ body {
   width: 105px;
   background: white;
   border-radius: 10px;
+  z-index: 5;
+  pointer-events: none;
 }
 
-.screen {
-  display: none;
-  position: absolute;
-  inset: 0;
-}
-
-.screen.active {
-  display: block;
-}
-
-#lock {
-  cursor: pointer;
-}
+/* 비밀번호 화면 */
 
 #passcode {
   background: linear-gradient(145deg, #414653, #171a28);
@@ -261,10 +284,11 @@ body {
   background: rgba(190, 194, 208, .3);
   font-size: 29px;
   font-weight: 300;
+  cursor: pointer;
 }
 
 .key:active {
-  background: rgba(255, 255, 255, .6);
+  background: rgba(255,255,255,.6);
 }
 
 .key small {
@@ -286,7 +310,10 @@ body {
   background: none;
   border: none;
   font-size: 14px;
+  cursor: pointer;
 }
+
+/* 홈 화면 */
 
 #home {
   background: linear-gradient(150deg, #b9c7da, #75899f);
@@ -298,7 +325,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   padding: 10px 22px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .widget {
@@ -337,50 +364,9 @@ body {
 .app {
   text-align: center;
   font-size: 11px;
+  cursor: pointer;
 }
 
-.app-emoji {
-  width: 54px;
-  height: 54px;
-  border-radius: 15px;
-  margin: auto auto 6px;
-  display: grid;
-  place-items: center;
-  background: #f8f8fb;
-  font-size: 31px;
-  box-shadow: 0 3px 8px #35415430;
-}
-
-.dock {
-  position: absolute;
-  bottom: 35px;
-  left: 5%;
-  width: 90%;
-  height: 75px;
-  border-radius: 25px;
-  background: #ffffff55;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.dock .app-emoji {
-  margin: 0;
-  width: 48px;
-  height: 48px;
-}
-
-#home .home-bar {
-  background: #11131d;
-}
-
-.message {
-  text-align: center;
-  margin-top: 22px;
-  font-size: 12px;
-  color: #ffffffbd;
-}
-/* 앱 아이콘 공통 디자인 */
 .app-emoji {
   width: 64px;
   height: 64px;
@@ -391,10 +377,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #f8f8fb;
+  font-size: 31px;
   box-shadow: 0 2px 4px #00000018;
 }
 
-/* 카카오톡 */
+/* 카카오톡 아이콘 */
+
 .kakao-icon {
   background: #fee500;
 }
@@ -408,7 +397,8 @@ body {
   border-radius: 9px;
 }
 
-/* 메모 */
+/* 메모 아이콘 */
+
 .memo-icon {
   background: linear-gradient(#ffda57 0 20%, #fffdf4 20%);
   flex-direction: column;
@@ -422,7 +412,8 @@ body {
   background: #c9c9c9;
 }
 
-/* Safari */
+/* 사파리 아이콘 */
+
 .safari-icon {
   background: radial-gradient(circle, #fff 35%, #bcecff 36%, #168bd7 100%);
   border: 2px solid #e5f5ff;
@@ -436,7 +427,8 @@ body {
   transform: rotate(-35deg);
 }
 
-/* 메시지 */
+/* 메시지 아이콘 */
+
 .message-icon {
   background: linear-gradient(145deg, #62ed77, #00b93d);
 }
@@ -459,7 +451,8 @@ body {
   border-color: white transparent transparent transparent;
 }
 
-/* 캘린더 */
+/* 캘린더 아이콘 */
+
 .calendar-icon {
   background: white;
   flex-direction: column;
@@ -482,7 +475,8 @@ body {
   font-weight: 500;
 }
 
-/* 시계 */
+/* 시계 아이콘 */
+
 .clock-icon {
   background: radial-gradient(circle, #242424, #000);
   border-radius: 50%;
@@ -511,7 +505,53 @@ body {
   background: #ff9f43;
   transform: rotate(145deg);
 }
-  /* 카카오톡 채팅 목록 */
+
+.message {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 12px;
+  color: #ffffffbd;
+}
+
+/* 하단 Dock */
+
+.dock {
+  position: absolute;
+  bottom: 35px;
+  left: 5%;
+  width: 90%;
+  height: 75px;
+  border-radius: 25px;
+  background: #ffffff55;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dock .app-emoji {
+  width: 54px;
+  height: 54px;
+  margin: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.phone-icon {
+  background: linear-gradient(145deg, #61ed77, #00bb42);
+  color: white;
+}
+
+.phone-icon span {
+  font-size: 38px;
+  transform: rotate(-35deg);
+}
+
+#home .home-bar {
+  background: #11131d;
+}
+
+/* 카카오톡 채팅 목록 */
+
 .kakao-screen {
   background: white;
   color: #191919;
@@ -521,12 +561,13 @@ body {
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 0px 22px 10px;
+  padding: 0 22px 10px;
 }
 
 .kakao-header button {
   background: none;
   border: none;
+  color: #078cff;
   font-size: 34px;
   cursor: pointer;
 }
@@ -553,6 +594,17 @@ body {
 .kakao-tabs .selected {
   background: #171717;
   color: white;
+}
+
+.kakao-scroll {
+  position: absolute;
+  top: 185px;
+  bottom: 75px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .kakao-banner {
@@ -640,17 +692,11 @@ body {
 }
 
 .kakao-homebar {
-  position: absolute;
-  bottom: 9px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 105px;
-  height: 5px;
   background: #111;
-  border-radius: 10px;
 }
 
 /* 카카오톡 대화방 */
+
 .chat-room {
   background: #b0c6d8;
   color: #111;
@@ -789,283 +835,241 @@ body {
   cursor: pointer;
   flex-shrink: 0;
 }
-  /* 카카오톡 배너와 채팅 목록 함께 스크롤 */
-#kakao {
-  overflow: hidden;
+
+/* 작은 화면 대응 */
+
+@media (max-height: 700px) {
+  .pass-title {
+    margin-top: 20px;
+  }
+
+  .dots {
+    margin-bottom: 18px;
+  }
+
+  .keypad {
+    gap: 6px 18px;
+  }
+
+  .pass-actions {
+    padding: 15px 38px;
+  }
 }
 
-.kakao-scroll {
-  position: absolute;
-  top: 185px;
-  bottom: 75px;
-  left: 0;
-  right: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-}
-  
-/* 하단 독 아이콘 디자인 */
-.dock .app-emoji {
-  width: 54px;
-  height: 54px;
-  margin: 0;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-
-/* 전화 아이콘 */
-.phone-icon {
-  background: linear-gradient(145deg, #61ed77, #00bb42);
-  color: white;
-}
-
-.phone-icon span {
-  font-size: 38px;
-  transform: rotate(-35deg);
-}
-
-/* 독 안의 카카오톡 */
-.dock .kakao-icon {
-  background: #fee500;
-}
-
-/* 독 안의 메시지 */
-.dock .message-icon {
-  background: linear-gradient(145deg, #62ed77, #00b93d);
-}
-
-/* 독 안의 사파리 */
-.dock .safari-icon {
-  border-radius: 50%;
-}
-  
-/* 밝은 배경에서는 검은 상단바 */
-#home .status,
-#kakao .status,
-#chat-jaegwan .status {
-  color: #111;
-}
-
-/* 어두운 배경에서는 흰 상단바 */
-#lock .status,
-#passcode .status {
-  color: white;
-}
-
-/* 채팅방 배경에서는 흰색 상단바 */
-#chat-jaegwan .status {
-  color: white;
-}
 </style>
 </head>
 
 <body>
 <div class="phone">
-  
+
+<!-- 잠금화면 -->
+
 <section id="lock" class="screen active">
-  <div class="status">
-    <span id="statusTime">23:32</span>
 
-  <div class="status-right">
-    <div class="signal-bars">
-      <span></span><span></span>
-      <span></span><span></span>
-    </div>
+  <div class="status"></div>
+  <div class="island"></div>
 
-    <span class="network-text">5G</span>
+  <div class="date" id="date"></div>
+  <div class="clock" id="clock"></div>
 
-    <div class="battery">
-      <span>67</span>
-    </div>
-  </div>
-</div>
+  <div class="notifications">
 
-    <div class="island"></div>
-
-    <div class="date" id="date">10월 22일 목요일</div>
-    <div class="clock" id="clock">23:32</div>
-
-    <div class="notifications">
-      <div class="notice">
-        <div class="notice-head">
-          <span class="app-icon">●</span>
-          카카오톡 <span class="notice-time">20:47</span>
-        </div>
-        <b>한서영</b><br>오빠
+    <div class="notice">
+      <div class="notice-head">
+        <span class="app-icon">●</span>
+        카카오톡
+        <span class="notice-time">20:47</span>
       </div>
+      <b>한서영</b>
+      <div>오빠</div>
+    </div>
 
-      <div class="notice">
-        <div class="notice-head">
-          <span class="app-icon">●</span>
-          카카오톡 <span class="notice-time">19:18</span>
-        </div>
-        <b>김래빈</b><br>그럼 또 연락 드리겠습니다!
+    <div class="notice">
+      <div class="notice-head">
+        <span class="app-icon">●</span>
+        카카오톡
+        <span class="notice-time">19:18</span>
       </div>
+      <b>김래빈</b>
+      <div>그럼 또 연락 드리겠습니다!</div>
+    </div>
 
-      <div class="notice">
-        <div class="notice-head">
-          <span class="app-icon" style="background:#f04b30;color:white">C</span>
-          캐치테이블 <span class="notice-time">18:42</span>
-        </div>
-        박문대님, 10월 24일 예약을 확인해 주세요.
+    <div class="notice">
+      <div class="notice-head">
+        <span class="app-icon" style="background:#f04b30;color:white">C</span>
+        캐치테이블
+        <span class="notice-time">18:42</span>
       </div>
+      박문대님, 10월 24일 예약을 확인해 주세요.
+    </div>
 
-      <div class="notice">
-        <div class="notice-head">
-          <span class="app-icon" style="background:#3154e8;color:white">T.</span>
-          트립닷컴 <span class="notice-time">17:25</span>
-        </div>
-        두근두근 ✈ 박문대님, 예약일이 얼마 남지 않았어요!
+    <div class="notice">
+      <div class="notice-head">
+        <span class="app-icon" style="background:#3154e8;color:white">T.</span>
+        트립닷컴
+        <span class="notice-time">17:25</span>
       </div>
+      두근두근 ✈ 박문대님, 예약일이 얼마 남지 않았어요!
     </div>
 
-    <div class="unlock-hint">화면을 탭하여 열기</div>
-    <div class="camera">📷</div>
-    <div class="home-bar"></div>
-  </section>
+  </div>
 
-  <section id="passcode" class="screen">
-    <div class="status">
-      <span id="passTime">23:32</span>
-      <span>▮▮▮　●　67 ▰</span>
+  <div class="unlock-hint">화면을 탭하여 열기</div>
+  <div class="camera">📷</div>
+  <div class="home-bar"></div>
+
+</section>
+
+<!-- 암호 입력 화면 -->
+
+<section id="passcode" class="screen">
+
+  <div class="status"></div>
+  <div class="island"></div>
+
+  <div class="pass-title">암호 입력</div>
+
+  <div class="dots" id="dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <div class="keypad">
+
+    <button class="key" onclick="press(1)">1</button>
+    <button class="key" onclick="press(2)">2<small>ABC</small></button>
+    <button class="key" onclick="press(3)">3<small>DEF</small></button>
+
+    <button class="key" onclick="press(4)">4<small>GHI</small></button>
+    <button class="key" onclick="press(5)">5<small>JKL</small></button>
+    <button class="key" onclick="press(6)">6<small>MNO</small></button>
+
+    <button class="key" onclick="press(7)">7<small>PQRS</small></button>
+    <button class="key" onclick="press(8)">8<small>TUV</small></button>
+    <button class="key" onclick="press(9)">9<small>WXYZ</small></button>
+
+    <span></span>
+    <button class="key" onclick="press(0)">0</button>
+
+  </div>
+
+  <div class="pass-actions">
+    <button onclick="cancelPass()">취소</button>
+    <button onclick="erase()">지우기</button>
+  </div>
+
+  <div class="home-bar"></div>
+
+</section>
+
+<!-- 홈 화면 -->
+
+<section id="home" class="screen">
+
+  <div class="status"></div>
+  <div class="island"></div>
+
+  <div class="widgets">
+
+    <div class="widget weather">
+      <b>서울 ›</b>
+      <div class="temperature">17°</div>
+      <div>🌤️ 맑음</div>
+      <div>최고:21° 최저:11°</div>
     </div>
-    <div class="island"></div>
 
-    <div class="pass-title">암호 입력</div>
-    <div class="dots" id="dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+    <div class="widget">
+      <div class="reminder-title">⊙ 미리 알림</div>
+      <b>◯ 4주년</b>
+      <p>10월 24일</p>
+      <small style="color:#999">
+        ○ 한서영 생일 · 1월 5일
+      </small>
     </div>
 
-    <div class="keypad">
-      <button class="key" onclick="press(1)">1</button>
-      <button class="key" onclick="press(2)">2<small>ABC</small></button>
-      <button class="key" onclick="press(3)">3<small>DEF</small></button>
-      <button class="key" onclick="press(4)">4<small>GHI</small></button>
-      <button class="key" onclick="press(5)">5<small>JKL</small></button>
-      <button class="key" onclick="press(6)">6<small>MNO</small></button>
-      <button class="key" onclick="press(7)">7<small>PQRS</small></button>
-      <button class="key" onclick="press(8)">8<small>TUV</small></button>
-      <button class="key" onclick="press(9)">9<small>WXYZ</small></button>
-      <span></span>
-      <button class="key" onclick="press(0)">0</button>
-    </div>
+  </div>
 
-    <div class="pass-actions">
-      <button onclick="cancelPass()">취소</button>
-      <button onclick="erase()">지우기</button>
-    </div>
-    <div class="home-bar"></div>
-  </section>
+  <div class="apps">
 
-  <section id="home" class="screen">
-    <div class="status">
-      <span id="homeTime">23:32</span>
-      <span>▮▮▮　●　67 ▰</span>
-    </div>
-    <div class="island"></div>
-
-    <div class="widgets">
-      <div class="widget weather">
-        <b>서울 ›</b>
-        <div class="temperature">17°</div>
-        <div>🌤️ 맑음</div>
-        <div>최고:21° 최저:11°</div>
+    <div class="app" onclick="showScreen('kakao')">
+      <div class="app-emoji kakao-icon">
+        <span>TALK</span>
       </div>
+      카카오톡
+    </div>
 
-      <div class="widget">
-        <div class="reminder-title">⊙ 미리 알림</div>
-        <b>◯ 4주년</b>
-        <p>10월 24일</p>
-        <small style="color:#999">○ 한서영 생일 · 1월 5일</small>
+    <div class="app">
+      <div class="app-emoji memo-icon">
+        <div></div><div></div><div></div>
       </div>
+      메모
     </div>
 
-    <div class="apps">
-<div class="app" onclick="showScreen('kakao')">
-  <div class="app-emoji kakao-icon">
-    <span>TALK</span>
-  </div>
-  카카오톡
-</div>
-<div class="app">
-  <div class="app-emoji memo-icon">
-    <div></div><div></div><div></div>
-  </div>
-  메모
-</div>
-
-<div class="app">
-  <div class="app-emoji safari-icon">
-    <div class="compass">➤</div>
-  </div>
-  Safari
-</div>
-
-<div class="app">
-  <div class="app-emoji message-icon">
-    <div></div>
-  </div>
-  메시지
-</div>
-
-<div class="app">
-  <div class="app-emoji calendar-icon">
-    <span>목</span>
-    <strong>22</strong>
-  </div>
-  캘린더
-</div>
-
-<div class="app">
-  <div class="app-emoji clock-icon">
-    <div class="clock-hand"></div>
-    <div class="clock-hand second"></div>
-  </div>
-  시계
-</div>
+    <div class="app">
+      <div class="app-emoji safari-icon">
+        <div class="compass">➤</div>
+      </div>
+      Safari
     </div>
 
-    <div class="message">앱을 눌러 열어보세요</div>
+    <div class="app">
+      <div class="app-emoji message-icon">
+        <div></div>
+      </div>
+      메시지
+    </div>
 
+    <div class="app">
+      <div class="app-emoji calendar-icon">
+        <span>목</span>
+        <strong>22</strong>
+      </div>
+      캘린더
+    </div>
 
-<div class="dock">
+    <div class="app">
+      <div class="app-emoji clock-icon">
+        <div class="clock-hand"></div>
+        <div class="clock-hand second"></div>
+      </div>
+      시계
+    </div>
 
-  <!-- 전화 -->
-  <div class="app-emoji phone-icon">
-    <span>☎</span>
   </div>
 
-  <!-- 메시지 -->
-  <div class="app-emoji message-icon">
-    <div></div>
+  <div class="message">앱을 눌러 열어보세요</div>
+
+  <div class="dock">
+
+    <div class="app-emoji phone-icon">
+      <span>☎</span>
+    </div>
+
+    <div class="app-emoji message-icon">
+      <div></div>
+    </div>
+
+    <div class="app-emoji kakao-icon" onclick="showScreen('kakao')">
+      <span>TALK</span>
+    </div>
+
+    <div class="app-emoji safari-icon">
+      <div class="compass">➤</div>
+    </div>
+
   </div>
 
-  <!-- 카카오톡 -->
-  <div class="app-emoji kakao-icon"
-       onclick="showScreen('kakao')">
-    <span>TALK</span>
-  </div>
+  <div class="home-bar"></div>
 
-  <!-- 사파리 -->
-  <div class="app-emoji safari-icon">
-    <div class="compass">➤</div>
-  </div>
+</section>
 
-</div>
-
-    <div class="home-bar"></div>
-  </section>
 <!-- 카카오톡 채팅 목록 -->
+
 <section id="kakao" class="screen kakao-screen">
 
-  <div class="status">
-    <span id="kakaoTime">23:32</span>
-    <span>▮▮▮ 5G ▰</span>
-  </div>
+  <div class="status"></div>
   <div class="island"></div>
 
   <div class="kakao-header">
@@ -1081,62 +1085,63 @@ body {
   </div>
 
   <div class="kakao-scroll">
-  <div class="kakao-banner">
-    <b>테스타 'TeSTAR LAND' 팝업</b>
-    <p>10.31-11.18 사전 예약하기</p>
+
+    <div class="kakao-banner">
+      <b>테스타 'TeSTAR LAND' 팝업</b>
+      <p>10.31-11.18 사전 예약하기</p>
+    </div>
+
+    <div class="chat-list">
+
+      <div class="chat-item" onclick="showScreen('chat-jaegwan')">
+        <div class="profile">●</div>
+        <div class="chat-info">
+          <b class="unread">한서영 📌</b>
+          <p>오빠</p>
+        </div>
+        <small>22:35</small>
+      </div>
+
+      <div class="chat-item">
+        <div class="profile">●</div>
+        <div class="chat-info">
+          <b class="unread">테스타 📌</b>
+          <p>알았어</p>
+        </div>
+        <small>9월 22일</small>
+      </div>
+
+      <div class="chat-item">
+        <div class="profile">●</div>
+        <div class="chat-info">
+          <b class="unread">김래빈</b>
+          <p>그럼 또 연락 드리겠습니다!</p>
+        </div>
+        <small>20:47</small>
+      </div>
+
+      <div class="chat-item">
+        <div class="profile">●</div>
+        <div class="chat-info">
+          <b class="unread">이세진</b>
+          <p>세진이 서운해ㅜㅜ</p>
+        </div>
+        <small>19:18</small>
+      </div>
+
+      <div class="chat-item">
+        <div class="profile">●</div>
+        <div class="chat-info">
+          <b class="unread">큰달</b>
+          <p>넵!!</p>
+        </div>
+        <small>10월 4일</small>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="chat-list">
-
-    <div class="chat-item" onclick="showScreen('chat-jaegwan')">
-      <div class="profile">●</div>
-      <div class="chat-info">
-        <b class="unread">한서영 📌</b>
-        <p>오빠</p>
-      </div>
-      <small>22:35</small>
-    </div>
-
-    <div class="chat-item">
-      <div class="profile">●</div>
-      <div class="chat-info">
-        <b class="unread">테스타 📌</b>
-        <p>알았어</p>
-      </div>
-      <small>9월 22일</small>
-    </div>
-
-    <div class="chat-item">
-      <div class="profile">●</div>
-      <div class="chat-info">
-        <b class="unread">김래빈</b>
-        <p>그럼 또 연락 드리겠습니다!</p>
-      </div>
-      <small>20:47</small>
-    </div>
-
-    <div class="chat-item">
-      <div class="profile">●</div>
-      <div class="chat-info">
-        <b class="unread">이세진</b>
-        <p>세진이 서운해ㅜㅜ</p>
-      </div>
-      <small>19:18</small>
-    </div>
-
-    <div class="chat-item">
-      <div class="profile">●</div>
-      <div class="chat-info">
-        <b class="unread">큰달</b>
-        <p>넵!!</p>
-      </div>
-      <small>10월 4일</small>
-    </div>
-
-  </div>
-    
-  </div>
-    
   <div class="kakao-nav">
     <span>친구</span>
     <span class="nav-active">채팅</span>
@@ -1145,17 +1150,14 @@ body {
   </div>
 
   <div class="kakao-homebar"></div>
+
 </section>
 
-
-
 <!-- 한서영 채팅방 -->
+
 <section id="chat-jaegwan" class="screen chat-room">
 
-  <div class="status">
-    <span id="chatRoomTime">23:32</span>
-    <span>▮▮▮ 5G ▰</span>
-  </div>
+  <div class="status"></div>
   <div class="island"></div>
 
   <div class="room-header">
@@ -1256,14 +1258,15 @@ body {
 
   </div>
 
-  <!-- 메시지 입력창 -->
   <div class="chat-input-area">
     <span class="plus">＋</span>
+
     <input
       id="chatInput"
       value="왜?"
       placeholder="메시지 입력"
     >
+
     <button onclick="sendChat()">↑</button>
   </div>
 
@@ -1274,17 +1277,27 @@ body {
 </div>
 
 <script>
+
+/* 비밀번호 */
+
 let code = "";
 const PASSWORD = "0105";
+
+/* 화면 전환 */
 
 function showScreen(id) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
   });
 
-  document.getElementById(id).classList.add("active");
+  const nextScreen = document.getElementById(id);
 
-  // 채팅방을 열면 가장 최근 메시지로 이동
+  if (!nextScreen) return;
+
+  nextScreen.classList.add("active");
+
+  updateClock();
+
   if (id === "chat-jaegwan") {
     requestAnimationFrame(() => {
       const area = document.getElementById("messagesArea");
@@ -1293,55 +1306,84 @@ function showScreen(id) {
   }
 }
 
+/* 잠금화면 터치 */
+
 document.getElementById("lock").addEventListener("click", () => {
   showScreen("passcode");
 });
+
+/* 암호 동그라미 갱신 */
+
+function updateDots() {
+  document.querySelectorAll(".dot").forEach((dot, index) => {
+    dot.classList.toggle("filled", index < code.length);
+  });
+}
+
+/* 숫자 입력 */
 
 function press(number) {
   if (code.length >= 4) return;
 
   code += number;
-
-  document.querySelectorAll(".dot").forEach((dot, index) => {
-    dot.classList.toggle("filled", index < code.length);
-  });
+  updateDots();
 
   if (code.length === 4) {
     setTimeout(() => {
       if (code === PASSWORD) {
-  code = "";
-
-  document.querySelectorAll(".dot").forEach(dot => {
-    dot.classList.remove("filled");
-  });
-
-  showScreen("home");
-}
-      else {
         code = "";
-        document.querySelectorAll(".dot").forEach(dot => {
-          dot.classList.remove("filled");
-        });
+        updateDots();
+        showScreen("home");
+      } else {
+        code = "";
+        updateDots();
         alert("암호가 올바르지 않습니다.");
       }
     }, 250);
   }
 }
 
+/* 숫자 지우기 */
+
 function erase() {
   code = code.slice(0, -1);
-  document.querySelectorAll(".dot").forEach((dot, index) => {
-    dot.classList.toggle("filled", index < code.length);
-  });
+  updateDots();
 }
+
+/* 암호 입력 취소 */
 
 function cancelPass() {
   code = "";
-  document.querySelectorAll(".dot").forEach(dot => {
-    dot.classList.remove("filled");
-  });
+  updateDots();
   showScreen("lock");
 }
+
+/* 공통 상단바 만들기 */
+
+function createStatusBars() {
+  document.querySelectorAll(".status").forEach(status => {
+    status.innerHTML = `
+      <span class="status-time">--:--</span>
+
+      <div class="status-right">
+        <div class="signal-bars">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <span class="network-text">5G</span>
+
+        <div class="battery">
+          <span>67</span>
+        </div>
+      </div>
+    `;
+  });
+}
+
+/* 실시간 날짜와 시계 */
 
 function updateClock() {
   const now = new Date();
@@ -1352,28 +1394,32 @@ function updateClock() {
     hour12: false
   });
 
-  // 잠금화면 큰 시계
-  document.getElementById("clock").textContent = time;
+  // 모든 화면의 상단바 시간
+  document.querySelectorAll(".status-time").forEach(element => {
+    element.textContent = time;
+  });
 
-  // 모든 화면의 상단 시계
-  document.getElementById("statusTime").textContent = time;
-  document.getElementById("passTime").textContent = time;
-  document.getElementById("homeTime").textContent = time;
-  document.getElementById("kakaoTime").textContent = time;
-  document.getElementById("chatRoomTime").textContent = time;
+  // 잠금화면의 큰 시계
+  const clock = document.getElementById("clock");
+
+  if (clock) {
+    clock.textContent = time;
+  }
 
   // 잠금화면 날짜
-  document.getElementById("date").textContent =
-    now.toLocaleDateString("ko-KR", {
+  const date = document.getElementById("date");
+
+  if (date) {
+    date.textContent = now.toLocaleDateString("ko-KR", {
       month: "long",
       day: "numeric",
       weekday: "long"
     });
+  }
 }
 
+/* 카카오톡 메시지 전송 */
 
-updateClock();
-setInterval(updateClock, 1000);
 function sendChat() {
   const input = document.getElementById("chatInput");
   const text = input.value.trim();
@@ -1386,6 +1432,7 @@ function sendChat() {
   message.className = "my-message";
 
   const time = document.createElement("small");
+
   time.textContent = new Date().toLocaleTimeString("ko-KR", {
     hour: "2-digit",
     minute: "2-digit",
@@ -1403,6 +1450,16 @@ function sendChat() {
   input.value = "";
   area.scrollTop = area.scrollHeight;
 }
+
+/* 처음 실행할 때 */
+
+createStatusBars();
+updateClock();
+
+/* 1초마다 시간 갱신 */
+
+setInterval(updateClock, 1000);
+
 </script>
 </body>
 </html>
