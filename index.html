@@ -232,8 +232,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  padding: 24px 22px;
-  margin-top: 35px;
+  padding: 10px 22px;
+  margin-top: 0px;
 }
 
 .widget {
@@ -622,6 +622,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 9px;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .chat-date {
@@ -921,17 +923,17 @@ body {
     <div class="chat-item" onclick="showScreen('chat-jaegwan')">
       <div class="profile">●</div>
       <div class="chat-info">
-        <b class="unread">류재관 📌</b>
-        <p>예, 감사합니다</p>
+        <b class="unread">한서영 📌</b>
+        <p>오빠</p>
       </div>
-      <small>9월 27일</small>
+      <small>22:35</small>
     </div>
 
     <div class="chat-item">
       <div class="profile">●</div>
       <div class="chat-info">
-        <b class="unread">현무 1팀 📌</b>
-        <p>농담이야...</p>
+        <b class="unread">테스타 📌</b>
+        <p>알았어</p>
       </div>
       <small>9월 22일</small>
     </div>
@@ -939,8 +941,8 @@ body {
     <div class="chat-item">
       <div class="profile">●</div>
       <div class="chat-info">
-        <b class="unread">포도</b>
-        <p>요원님</p>
+        <b class="unread">김래빈</b>
+        <p>그럼 또 연락 드리겠습니다!</p>
       </div>
       <small>20:47</small>
     </div>
@@ -948,8 +950,8 @@ body {
     <div class="chat-item">
       <div class="profile">●</div>
       <div class="chat-info">
-        <b class="unread">김민수</b>
-        <p>토요일 18시 어때</p>
+        <b class="unread">이세진</b>
+        <p>세진이 서운해ㅜㅜ</p>
       </div>
       <small>19:18</small>
     </div>
@@ -957,8 +959,8 @@ body {
     <div class="chat-item">
       <div class="profile">●</div>
       <div class="chat-info">
-        <b class="unread">정수현</b>
-        <p>바빠 죽겠는데 소개팅은 무슨 됐다~</p>
+        <b class="unread">큰달</b>
+        <p>넵!!</p>
       </div>
       <small>10월 4일</small>
     </div>
@@ -976,7 +978,7 @@ body {
 </section>
 
 
-<!-- 류재관 채팅방 -->
+<!-- 힌서영 채팅방 -->
 <section id="chat-jaegwan" class="screen chat-room">
 
   <div class="status">
@@ -987,74 +989,100 @@ body {
 
   <div class="room-header">
     <button onclick="showScreen('kakao')">❮ 1</button>
-    <b>류재관</b>
+    <b>한서영</b>
     <span>☰</span>
   </div>
 
   <div class="messages-area" id="messagesArea">
+<div class="chat-date">2026년 10월 20일 화요일</div>
 
-    <div class="chat-date">2026년 8월 15일 일요일</div>
+<div class="other-message">
+  <div class="small-profile">●</div>
+  <div class="bubble white">오빠 오고 있어요?</div>
+  <small>13:32</small>
+</div>
+    
+<div class="other-message">
+  <div class="small-profile">●</div>
+  <div class="bubble white">음식 다 했는데!</div>
+  <small>13:32</small>
+</div>
+
+<div class="my-message">
+  <small>13:33</small>
+  <div class="bubble yellow">네가 음식을 했다고?</div>
+</div>
+
+<div class="other-message">
+  <div class="small-profile">●</div>
+  <div class="bubble white">뭐예요 그 반응은?</div>
+  <small>13:34</small>
+
+  <div class="my-message">
+  <small>13:35</small>
+  <div class="bubble yellow">아냐 맛있겠다</div>
+</div>
+
+  <div class="my-message">
+  <small>13:35</small>
+  <div class="bubble yellow">금방 갈게</div>
+</div>
+  
+</div>
+    <div class="chat-date">2026년 10월 21일 수요일</div>
 
     <div class="my-message">
-      <small>07:21</small>
-      <div class="bubble yellow">어디야?</div>
+      <small>10:18</small>
+      <div class="bubble yellow">뭐야?</div>
     </div>
 
     <div class="my-message">
-      <small>07:21</small>
+      <small>10:18</small>
       <div class="bubble yellow">무슨 일 있는건 아니지?</div>
     </div>
 
-    <div class="my-message">
-      <small>07:21</small>
-      <div class="bubble yellow">어디야 재관아</div>
+    <div class="other-message">
+  <div class="small-profile">●</div>
+  <div class="bubble white">아 아ㄴ;</div>
+  <small>10:19</small>
     </div>
 
     <div class="my-message">
-      <small>07:21</small>
-      <div class="bubble yellow">재관아</div>
+      <small>10:19</small>
+      <div class="bubble yellow">서영아</div>
     </div>
 
     <div class="my-message">
-      <small>07:21</small>
-      <div class="bubble yellow">류재관</div>
+      <small>10:19</small>
+      <div class="bubble yellow">한서영?</div>
     </div>
 
     <div class="other-message">
       <div class="small-profile">●</div>
       <div class="bubble white">
-        재고ㅑㄴ이 친군데요 지금 저희집에서 자고있습니다 깨워서 보낼게요
+       아니 바퀴벌레가
       </div>
-      <small>08:40</small>
+      <small>10:20</small>
+    </div>
+
+      <div class="other-message">
+  <div class="small-profile">●</div>
+  <div class="bubble white">호자ㅏㅇ실에 바ㅜ키;</div>
+  <small>10:19</small>
     </div>
 
     <div class="my-message">
-      <small>08:40</small>
-      <div class="bubble yellow">주소 보내주세요 제가 갈게요</div>
+      <small>10:25/small>
+      <div class="bubble yellow">잡았어?</div>
     </div>
 
-    <div class="chat-date">2026년 9월 27일 일요일</div>
-
-    <div class="my-message">
-      <small>21:33</small>
-      <div class="bubble yellow">
-        집은 정리해서 갖다줄게 퇴근할때 가져가
-      </div>
-    </div>
+    <div class="chat-date">2026년 10월 22일 목요일</div>
 
     <div class="other-message">
       <div class="small-profile">●</div>
-      <div class="bubble white">예, 감사합니다</div>
+      <div class="bubble white">오삐</div>
       <small>21:33</small>
     </div>
-
-  </div>
-
-  <div class="chat-input-area">
-    <span class="plus">＋</span>
-    <input
-      id="chatInput"
-      value="나 이제 너 때문에 여자 못 만나"
       placeholder="메시지 입력"
     >
     <button onclick="sendChat()">↑</button>
@@ -1073,7 +1101,16 @@ function showScreen(id) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
   });
+
   document.getElementById(id).classList.add("active");
+
+  // 채팅방을 열면 가장 최근 메시지로 이동
+  if (id === "chat-jaegwan") {
+    requestAnimationFrame(() => {
+      const area = document.getElementById("messagesArea");
+      area.scrollTop = area.scrollHeight;
+    });
+  }
 }
 
 document.getElementById("lock").addEventListener("click", () => {
