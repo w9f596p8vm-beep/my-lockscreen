@@ -29,14 +29,79 @@ body {
   background: linear-gradient(145deg, #414653, #171a28);
 }
 
+
 .status {
   height: 72px;
   padding: 25px 28px 0;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   font-weight: 600;
   font-size: 16px;
+  position: relative;
+  z-index: 2;
 }
+
+/* 오른쪽 통신 상태 */
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* 통신 신호 */
+.signal-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 17px;
+}
+
+.signal-bars span {
+  width: 4px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+.signal-bars span:nth-child(1) { height: 7px; }
+.signal-bars span:nth-child(2) { height: 10px; }
+.signal-bars span:nth-child(3) { height: 14px; }
+.signal-bars span:nth-child(4) { height: 17px; }
+
+/* 5G */
+.network-text {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* 배터리 */
+.battery {
+  width: 28px;
+  height: 15px;
+  border-radius: 4px;
+  background: currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.battery::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  width: 2px;
+  height: 7px;
+  background: currentColor;
+  border-radius: 0 2px 2px 0;
+}
+
+.battery span {
+  color: #222;
+  font-size: 11px;
+  font-weight: 800;
+}
+
 
 .island {
   position: absolute;
@@ -774,17 +839,48 @@ body {
 .dock .safari-icon {
   border-radius: 50%;
 }
+  
+/* 밝은 배경에서는 검은 상단바 */
+#home .status,
+#kakao .status,
+#chat-jaegwan .status {
+  color: #111;
+}
+
+/* 어두운 배경에서는 흰 상단바 */
+#lock .status,
+#passcode .status {
+  color: white;
+}
+
+/* 채팅방 배경에서는 흰색 상단바 */
+#chat-jaegwan .status {
+  color: white;
+}
 </style>
 </head>
 
 <body>
 <div class="phone">
 
-  <section id="lock" class="screen active">
-    <div class="status">
-      <span id="statusTime">23:32</span>
-      <span>▮▮▮　●　67 ▰</span>
+  
+<div class="status">
+  <span id="statusTime">23:32</span>
+
+  <div class="status-right">
+    <div class="signal-bars">
+      <span></span><span></span>
+      <span></span><span></span>
     </div>
+
+    <span class="network-text">5G</span>
+
+    <div class="battery">
+      <span>67</span>
+    </div>
+  </div>
+</div>
+
     <div class="island"></div>
 
     <div class="date" id="date">10월 22일 목요일</div>
