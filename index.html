@@ -537,13 +537,30 @@ body {
 }
 
 .phone-icon {
-  background: linear-gradient(145deg, #61ed77, #00bb42);
-  color: white;
+  background: linear-gradient(180deg, #58eb67 0%, #29d64b 100%);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    0 4px 10px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.phone-icon span {
-  font-size: 38px;
-  transform: rotate(-35deg);
+.phone-svg {
+  width: 34px;
+  height: 34px;
+  fill: white;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.12));
+  transform: rotate(-10deg);
+}
+
+.phone-svg {
+  width: 34px;
+  height: 34px;
+  fill: white;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.12));
+  transform: rotate(-10deg);
 }
 
 #home .home-bar {
@@ -1044,8 +1061,10 @@ body {
   <div class="dock">
 
     <div class="app-emoji phone-icon">
-      <span>☎</span>
-    </div>
+  <svg class="phone-svg" viewBox="0 0 64 64" aria-hidden="true">
+    <path d="M22.5 10.5c2-2 5.1-2.2 7.3-.6l5.2 3.8c2.3 1.7 3.1 4.7 1.9 7.2l-2.5 4.8c-.7 1.3-.4 2.9.7 4l3.8 3.8c1.1 1.1 2.7 1.4 4 .7l4.8-2.5c2.5-1.2 5.5-.4 7.2 1.9l3.8 5.2c1.6 2.2 1.4 5.3-.6 7.3l-2.3 2.3c-2.8 2.8-7.1 3.9-10.9 2.8-6.8-2-13.8-6.9-20.8-13.9S15 24.5 13 17.7c-1.1-3.8 0-8.1 2.8-10.9l2.3-2.3z"/>
+  </svg>
+</div>
 
     <div class="app-emoji message-icon">
       <div></div>
