@@ -978,7 +978,8 @@ body {
 </section>
 
 
-<!-- 힌서영 채팅방 -->
+
+<!-- 한서영 채팅방 -->
 <section id="chat-jaegwan" class="screen chat-room">
 
   <div class="status">
@@ -994,41 +995,42 @@ body {
   </div>
 
   <div class="messages-area" id="messagesArea">
-<div class="chat-date">2026년 10월 20일 화요일</div>
 
-<div class="other-message">
-  <div class="small-profile">●</div>
-  <div class="bubble white">오빠 오고 있어요?</div>
-  <small>13:32</small>
-</div>
-    
-<div class="other-message">
-  <div class="small-profile">●</div>
-  <div class="bubble white">음식 다 했는데!</div>
-  <small>13:32</small>
-</div>
+    <div class="chat-date">2026년 10월 20일 화요일</div>
 
-<div class="my-message">
-  <small>13:33</small>
-  <div class="bubble yellow">네가 음식을 했다고?</div>
-</div>
+    <div class="other-message">
+      <div class="small-profile">●</div>
+      <div class="bubble white">오빠 오고 있어요?</div>
+      <small>13:32</small>
+    </div>
 
-<div class="other-message">
-  <div class="small-profile">●</div>
-  <div class="bubble white">뭐예요 그 반응은?</div>
-  <small>13:34</small>
+    <div class="other-message">
+      <div class="small-profile">●</div>
+      <div class="bubble white">음식 다 했는데!</div>
+      <small>13:32</small>
+    </div>
 
-  <div class="my-message">
-  <small>13:35</small>
-  <div class="bubble yellow">아냐 맛있겠다</div>
-</div>
+    <div class="my-message">
+      <small>13:33</small>
+      <div class="bubble yellow">네가 음식을 했다고?</div>
+    </div>
 
-  <div class="my-message">
-  <small>13:35</small>
-  <div class="bubble yellow">금방 갈게</div>
-</div>
-  
-</div>
+    <div class="other-message">
+      <div class="small-profile">●</div>
+      <div class="bubble white">뭐예요 그 반응은?</div>
+      <small>13:34</small>
+    </div>
+
+    <div class="my-message">
+      <small>13:35</small>
+      <div class="bubble yellow">아냐 맛있겠다</div>
+    </div>
+
+    <div class="my-message">
+      <small>13:35</small>
+      <div class="bubble yellow">금방 갈게</div>
+    </div>
+
     <div class="chat-date">2026년 10월 21일 수요일</div>
 
     <div class="my-message">
@@ -1042,9 +1044,9 @@ body {
     </div>
 
     <div class="other-message">
-  <div class="small-profile">●</div>
-  <div class="bubble white">아 아ㄴ;</div>
-  <small>10:19</small>
+      <div class="small-profile">●</div>
+      <div class="bubble white">아 아ㄴ;</div>
+      <small>10:19</small>
     </div>
 
     <div class="my-message">
@@ -1059,20 +1061,18 @@ body {
 
     <div class="other-message">
       <div class="small-profile">●</div>
-      <div class="bubble white">
-       아니 바퀴벌레가
-      </div>
+      <div class="bubble white">아니 바퀴벌레가</div>
       <small>10:20</small>
     </div>
 
-      <div class="other-message">
-  <div class="small-profile">●</div>
-  <div class="bubble white">호자ㅏㅇ실에 바ㅜ키;</div>
-  <small>10:19</small>
+    <div class="other-message">
+      <div class="small-profile">●</div>
+      <div class="bubble white">호자ㅏㅇ실에 바ㅜ키;</div>
+      <small>10:19</small>
     </div>
 
     <div class="my-message">
-      <small>10:25/small>
+      <small>10:25</small>
       <div class="bubble yellow">잡았어?</div>
     </div>
 
@@ -1080,9 +1080,18 @@ body {
 
     <div class="other-message">
       <div class="small-profile">●</div>
-      <div class="bubble white">오삐</div>
+      <div class="bubble white">오빠</div>
       <small>21:33</small>
     </div>
+
+  </div>
+
+  <!-- 메시지 입력창 -->
+  <div class="chat-input-area">
+    <span class="plus">＋</span>
+    <input
+      id="chatInput"
+      value="왜?"
       placeholder="메시지 입력"
     >
     <button onclick="sendChat()">↑</button>
@@ -1091,6 +1100,7 @@ body {
   <div class="kakao-homebar"></div>
 
 </section>
+
 </div>
 
 <script>
