@@ -872,7 +872,170 @@ body {
     padding: 15px 38px;
   }
 }
+/* 전화 앱 */
+.phone-screen {
+  background: #f7f7f8;
+  color: #111;
+}
 
+.phone-header {
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  align-items: center;
+  padding: 4px 18px 18px;
+}
+
+.phone-header button {
+  border: none;
+  background: none;
+  color: #168bff;
+  font-size: 18px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.phone-header h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.phone-divider {
+  height: 1px;
+  background: #e7e7e7;
+}
+
+.phone-filter-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 18px 0 10px;
+}
+
+.phone-filter {
+  background: #e9e9ed;
+  border-radius: 20px;
+  padding: 4px;
+  display: flex;
+  gap: 4px;
+}
+
+.phone-filter-btn {
+  border: none;
+  background: transparent;
+  padding: 10px 22px;
+  border-radius: 16px;
+  font-size: 17px;
+  cursor: pointer;
+  color: #111;
+}
+
+.phone-filter-btn.active {
+  background: white;
+  font-weight: 700;
+}
+
+.phone-title {
+  font-size: 32px;
+  font-weight: 800;
+  padding: 18px 24px 10px;
+}
+
+.phone-list {
+  position: absolute;
+  top: 220px;
+  bottom: 78px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 16px 20px;
+}
+
+.call-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 8px;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.call-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #bfd0e7;
+  color: #405067;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.call-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.call-info b {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.call-info p {
+  margin: 0;
+  color: #9a9aa1;
+  font-size: 15px;
+}
+
+.call-item small {
+  color: #a0a0a6;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.call-item.missed .call-info b {
+  color: #e54848;
+}
+
+.phone-bottom-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  background: #f7f7f8;
+  border-top: 1px solid #e6e6e6;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 14px;
+  color: #a4a4ab;
+  font-size: 14px;
+}
+
+.phone-bottom-nav .active {
+  color: #111;
+  font-weight: 700;
+}
+
+#phone-app .status {
+  color: #111;
+}
+
+#phone-app .battery {
+  background: #111;
+}
+
+#phone-app .battery span {
+  color: white;
+}
+
+#phone-app .kakao-homebar {
+  background: #111;
+}
 </style>
 </head>
 
@@ -1060,7 +1223,7 @@ body {
 
   <div class="dock">
 
-    <div class="app-emoji phone-icon">
+<div class="app-emoji phone-icon" onclick="showScreen('phone-app')">
   <svg class="phone-svg" viewBox="0 0 64 64" aria-hidden="true">
     <path d="M22.5 10.5c2-2 5.1-2.2 7.3-.6l5.2 3.8c2.3 1.7 3.1 4.7 1.9 7.2l-2.5 4.8c-.7 1.3-.4 2.9.7 4l3.8 3.8c1.1 1.1 2.7 1.4 4 .7l4.8-2.5c2.5-1.2 5.5-.4 7.2 1.9l3.8 5.2c1.6 2.2 1.4 5.3-.6 7.3l-2.3 2.3c-2.8 2.8-7.1 3.9-10.9 2.8-6.8-2-13.8-6.9-20.8-13.9S15 24.5 13 17.7c-1.1-3.8 0-8.1 2.8-10.9l2.3-2.3z"/>
   </svg>
@@ -1293,8 +1456,118 @@ body {
 
 </section>
 
-</div>
+<!-- 전화 앱 -->
+<section id="phone-app" class="screen phone-screen">
 
+  <div class="status"></div>
+  <div class="island"></div>
+
+  <div class="phone-header">
+    <button onclick="showScreen('home')">‹ 뒤로</button>
+    <h1>전화</h1>
+    <div></div>
+  </div>
+
+  <div class="phone-divider"></div>
+
+  <div class="phone-filter-wrap">
+    <div class="phone-filter">
+      <button class="phone-filter-btn active" onclick="filterCalls('all', this)">전체</button>
+      <button class="phone-filter-btn" onclick="filterCalls('missed', this)">부재중</button>
+    </div>
+  </div>
+
+  <div class="phone-title">최근 통화</div>
+
+  <div class="phone-list" id="phoneList">
+
+    <div class="call-item missed">
+      <div class="call-avatar">한</div>
+      <div class="call-info">
+        <b>한서영</b>
+        <p>↙ 부재중</p>
+      </div>
+      <small>오늘 01:22</small>
+    </div>
+
+    <div class="call-item">
+      <div class="call-avatar">선</div>
+      <div class="call-info">
+        <b>선아현</b>
+        <p>↗ 발신 통화</p>
+      </div>
+      <small>어제 22:08</small>
+    </div>
+
+    <div class="call-item">
+      <div class="call-avatar">차</div>
+      <div class="call-info">
+        <b>차유진</b>
+        <p>↙ 수신 통화</p>
+      </div>
+      <small>어제 16:47</small>
+    </div>
+
+    <div class="call-item missed">
+      <div class="call-avatar">세</div>
+      <div class="call-info">
+        <b>세진형</b>
+        <p>↙ 부재중</p>
+      </div>
+      <small>10월 17일</small>
+    </div>
+
+    <div class="call-item missed">
+      <div class="call-avatar">02</div>
+      <div class="call-info">
+        <b>02-5612-1455</b>
+        <p>↙ 부재중</p>
+      </div>
+      <small>10월 16일</small>
+    </div>
+
+    <div class="call-item">
+      <div class="call-avatar">한</div>
+      <div class="call-info">
+        <b>한서영</b>
+        <p>↗ 발신 통화</p>
+      </div>
+      <small>10월 15일</small>
+    </div>
+
+    <div class="call-item missed">
+      <div class="call-avatar">선</div>
+      <div class="call-info">
+        <b>선아현</b>
+        <p>↙ 부재중</p>
+      </div>
+      <small>10월 14일</small>
+    </div>
+
+    <div class="call-item">
+      <div class="call-avatar">차</div>
+      <div class="call-info">
+        <b>차유진</b>
+        <p>↙ 수신 통화</p>
+      </div>
+      <small>10월 13일</small>
+    </div>
+
+  </div>
+
+  <div class="phone-bottom-nav">
+    <span>즐겨찾기</span>
+    <span class="active">최근 통화</span>
+    <span>연락처</span>
+    <span>키패드</span>
+  </div>
+
+  <div class="kakao-homebar"></div>
+
+</section>
+
+  </div>
+  
 <script>
 
 /* 비밀번호 */
@@ -1478,7 +1751,22 @@ updateClock();
 /* 1초마다 시간 갱신 */
 
 setInterval(updateClock, 1000);
+  
+function filterCalls(type, button) {
+  document.querySelectorAll(".phone-filter-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
 
+  button.classList.add("active");
+
+  document.querySelectorAll("#phone-app .call-item").forEach(item => {
+    if (type === "all") {
+      item.style.display = "flex";
+    } else {
+      item.style.display = item.classList.contains("missed") ? "flex" : "none";
+    }
+  });
+}
 </script>
 </body>
 </html>
